@@ -39,4 +39,11 @@ internal extension CIImage {
     internal func nonInterpolatedImage(withScale scale: CGFloat) -> UIImage {
         return self.nonInterpolatedImage(withScale: Scale(scale))
     }
+    
+    // TODO: comments
+    
+    func applyFilter(filter: CIFilter) -> CIImage? {
+        filter.setValue(self, forKey: kCIInputImageKey)
+        return filter.outputImage
+    }
 }

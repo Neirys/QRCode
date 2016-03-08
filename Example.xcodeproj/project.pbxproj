@@ -22,6 +22,7 @@
 		4D9240661A7805310069D66D /* CIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9240651A7805310069D66D /* CIColorExtension.swift */; };
 		AA24AF3C1C24788900D1BEC7 /* Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA24AF3B1C24788900D1BEC7 /* Scale.swift */; };
 		AA24AF3E1C247A7C00D1BEC7 /* CIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA24AF3D1C247A7C00D1BEC7 /* CIImageExtension.swift */; };
+		AA905CDD1C63E1690024E0E7 /* CIFilterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA905CDC1C63E1690024E0E7 /* CIFilterExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		4D9240651A7805310069D66D /* CIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIColorExtension.swift; sourceTree = "<group>"; };
 		AA24AF3B1C24788900D1BEC7 /* Scale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scale.swift; sourceTree = "<group>"; };
 		AA24AF3D1C247A7C00D1BEC7 /* CIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIImageExtension.swift; sourceTree = "<group>"; };
+		AA905CDC1C63E1690024E0E7 /* CIFilterExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIFilterExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,10 +157,11 @@
 			isa = PBXGroup;
 			children = (
 				4D248F511A751CE300E44E6B /* QRCode.swift */,
+				AA24AF3B1C24788900D1BEC7 /* Scale.swift */,
 				4D9240631A78050C0069D66D /* UIImageViewExtension.swift */,
 				4D9240651A7805310069D66D /* CIColorExtension.swift */,
 				AA24AF3D1C247A7C00D1BEC7 /* CIImageExtension.swift */,
-				AA24AF3B1C24788900D1BEC7 /* Scale.swift */,
+				AA905CDC1C63E1690024E0E7 /* CIFilterExtension.swift */,
 				4D248F351A751C7800E44E6B /* QRCode.h */,
 				4D248F331A751C7800E44E6B /* Supporting Files */,
 			);
@@ -349,6 +352,7 @@
 				AA24AF3E1C247A7C00D1BEC7 /* CIImageExtension.swift in Sources */,
 				AA24AF3C1C24788900D1BEC7 /* Scale.swift in Sources */,
 				4D9240661A7805310069D66D /* CIColorExtension.swift in Sources */,
+				AA905CDD1C63E1690024E0E7 /* CIFilterExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

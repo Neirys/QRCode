@@ -28,6 +28,18 @@ public struct QRCode {
         case High = "H"
     }
     
+    // TODO: comments
+    public enum SchemeColor {
+        case Normal(color: CIColor, backgroundColor: CIColor)
+        case Transparent(color: CIColor)
+    }
+    
+    // TODO: comments
+    public var schemeColor: SchemeColor = .Normal(
+        color: CIColor(red: 0, green: 0, blue: 0),
+        backgroundColor: CIColor(red: 1, green: 1, blue: 1)
+    )
+    
     /// Data contained in the generated QRCode
     public let data: NSData
     
@@ -83,21 +95,40 @@ public struct QRCode {
     
     /// The QRCode's CIImage representation
     public var ciImage: CIImage? {
-        // Generate QRCode
-        guard let qrFilter = CIFilter(name: "CIQRCodeGenerator") else { return nil }
         
-        qrFilter.setDefaults()
-        qrFilter.setValue(data, forKey: "inputMessage")
-        qrFilter.setValue(self.errorCorrection.rawValue, forKey: "inputCorrectionLevel")
         
-        // Color code and background
-        guard let colorFilter = CIFilter(name: "CIFalseColor") else { return nil }
+        let qrFilter = CIFilter.QRCodeGeneratorFilter(data: data, errorCorrection: self.errorCorrection.rawValue)
         
-        colorFilter.setDefaults()
-        colorFilter.setValue(qrFilter.outputImage, forKey: "inputImage")
-        colorFilter.setValue(color, forKey: "inputColor0")
-        colorFilter.setValue(backgroundColor, forKey: "inputColor1")
+        guard let qrImage = qrFilter.outputImage else { return nil }
         
-        return colorFilter.outputImage
+        switch self.schemeColor {
+        case .Normal(let color, let backgroundColor):
+            let colorFilter = CIFilter.falseColorFilter(color0: color, color1: backgroundColor)
+            
+            return qrImage.applyFilter(colorFilter)
+        case .Transparent(let color):
+            let whiteAndBlackFilter = CIFilter.whiteAndBlackFilter()
+            let maskToAlphaFilter = CIFilter.maskToAlphaFilter()
+            let colorFilter = CIFilter.falseColorFilter(color0: nil, color1: color)
+            
+            return qrImage.applyFilter(whiteAndBlackFilter)?.applyFilter(maskToAlphaFilter)?.applyFilter(colorFilter)
+        }
+        
+//        // Generate QRCode
+//        guard let qrFilter = CIFilter(name: "CIQRCodeGenerator") else { return nil }
+//        
+//        qrFilter.setDefaults()
+//        qrFilter.setValue(data, forKey: "inputMessage")
+//        qrFilter.setValue(self.errorCorrection.rawValue, forKey: "inputCorrectionLevel")
+//        
+//        // Color code and background
+//        guard let colorFilter = CIFilter(name: "CIFalseColor") else { return nil }
+//        
+//        colorFilter.setDefaults()
+//        colorFilter.setValue(qrFilter.outputImage, forKey: "inputImage")
+//        colorFilter.setValue(color, forKey: "inputColor0")
+//        colorFilter.setValue(backgroundColor, forKey: "inputColor1")
+//        
+//        return colorFilter.outputImage
     }
 }

@@ -28,6 +28,9 @@ class ViewController: UIViewController {
             var qrCode = QRCode("http://github.com/aschuch/QRCode")!
             qrCode.size = self.imageViewLarge.bounds.size
             qrCode.errorCorrection = .High
+            qrCode.schemeColor = .Normal(color: CIColor(color: .redColor()),
+                backgroundColor: CIColor(color: .greenColor()))
+            
             return qrCode.image
         }()
         
@@ -37,6 +40,7 @@ class ViewController: UIViewController {
             var qrCode = QRCode("http://schuch.me")!
             qrCode.size = self.imageViewMedium.bounds.size
             qrCode.color = CIColor(rgba: "8e44ad")
+            qrCode.schemeColor = .Transparent(color: CIColor(color: .blueColor()))
             return qrCode.image
         }()
         
@@ -47,6 +51,7 @@ class ViewController: UIViewController {
             qrCode.size = self.imageViewSmall1.bounds.size
             qrCode.color = CIColor(rgba: "fff")
             qrCode.backgroundColor = CIColor(rgba: "e74c3c")
+            qrCode.schemeColor = .Transparent(color: CIColor(color: .orangeColor()))
             return qrCode.image
         }()
         
